@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>:::: test ::::</title>
+
+	<link rel="stylesheet" type="text/css" href="drop.min.css" />
+	<script type="text/javascript" src="drop.min.js"></script>
+
+</head>
+
+<body>
+	<script type="text/javascript">
+
+		namespace( drop, "drop_" );
+		//_random_background_color = true;
+
+		function main()
+		{
+			var script_element = document.getElementById("script");
+			var script = script_element.innerText;
+
+			var control = drop_parse2( script );
+
+			var edit = control.control_list[1]; // drop_find_control( "name:edit" );
+			var button = control.control_list[3]; // drop_find_control( "name:button" );
+
+			button.on_click = function()
+			{
+				alert( edit.get_text() );
+			}
+		}
+
+	</script>
+
+<div id="script" style="display:none">
+{
+	"layout_control" : { 
+		"orientation" : "horizontal", 
+		"gravity" : "middle|center", 
+		"left" : 100, 
+		"top" : 100, 
+		"width" :400, 
+		"height" : 100, 
+		"controls" : [
+			{
+				"label":{ 
+					"width":40, 
+					"height": 30, 
+					"text":"이름"
+				}
+			},
+			{
+				"edit":{
+					"name":"edit", 
+					"text":"TEST", 
+					"width":180, 
+					"height": 30
+				}
+			},
+			{
+				"layout_control":{ 
+					"width":10, 
+					"height": 30
+				}
+			},
+			{
+				"button":{
+					"name":"button",
+					"text":"확인",
+					"width": 80, 
+					"height": 30
+				}
+			}
+		]
+	}
+}
+</div>
+
+</body>
+
+</html>
